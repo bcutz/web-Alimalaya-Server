@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/alimaya', {
+mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true
 })
     .then(db => console.log('Db is connected'))
