@@ -20,19 +20,31 @@ router.get('/', async (req, res) => {
     
 });
 
+router.get('/listado', async(req, res) =>{
+    const imagenes = await Image.find();
+    res.json(imagenes);
+});
+
+router.get('/listado/:id', async(req, res) =>{
+    const { id } = req.params;
+    const image = await Image.findById(id);
+    res.json(image);
+});
+
 router.get('/upload', (req, res) =>{
     
     res.render('uploads');
 });
 
 router.post('/upload', async (req, res) =>{
-    const { title, description, precio } = req.body;
+    const { title, description, presentacion, precio } = req.body;
     // Saving Image in Cloudinary
     try {
         const result = await cloudinary.v2.uploader.upload(req.file.path);
         const newPhoto = new Image({
             title, 
             description,
+            presentacion,
             precio,
             imageURL: result.url,
             public_id: result.public_id

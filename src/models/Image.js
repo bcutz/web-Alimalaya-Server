@@ -3,6 +3,7 @@ const { Schema, model } = require('mongoose');
 const imageSchema = new Schema({
     title: {type: String},
     description: {type: String},
+    presentacion: {type: String},
     precio: {type: String},
     imageURL: {type: String},
     public_id: {type: String},

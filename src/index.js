@@ -4,6 +4,7 @@ if(process.env.NODE_ENV !== 'production'){
 
 const express = require ('express');
 const path = require ('path');
+const cors = require ('cors');
 const morgan = require('morgan');
 const multer = require('multer');
 const uudi = require('uuid/v4');
@@ -17,6 +18,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 //Middelwares funciones que se ejecutan antes de las rutas
+app.use(cors());
 app.use(morgan('dev'));
 app.use(express.urlencoded({extended: false}));
 const storage = multer.diskStorage({
