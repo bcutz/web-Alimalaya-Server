@@ -2,3 +2,5 @@ node_modules
 .env
 node_modules
 src/public/img/uploads
+# dependencies
+/node_modules
